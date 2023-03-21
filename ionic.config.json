@@ -1,0 +1,7 @@
+{
+  "name": "ppt",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
