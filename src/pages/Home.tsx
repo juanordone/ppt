@@ -65,6 +65,12 @@ const Home: React.FC = () => {
     setResult(newResult.result);
     setGameHistory([...gameHistory, newResult].slice(-10));
   }
+  function resetGame() {
+    setPlayerChoice(null);
+    setComputerChoice(null);
+    setResult(null);
+    setGameHistory([]);
+  }
 
   return (
     <IonPage>
@@ -106,7 +112,7 @@ const Home: React.FC = () => {
               </IonButton>
             </IonCol>
             <IonCol>
-             
+             <IonButton onClick={resetGame}>Reiniciar</IonButton>
             </IonCol>
           </IonRow>
           <IonRow>
