@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   IonContent,
   IonHeader,
@@ -11,9 +11,9 @@ import {
   IonCol,
   IonIcon,
   IonLabel,
-} from '@ionic/react';
-import { calculatorOutline } from 'ionicons/icons';
-import './Home.css';
+} from "@ionic/react";
+import { calculatorOutline } from "ionicons/icons";
+import "./Home.css";
 
 interface GameResult {
   playerChoice: string;
@@ -23,15 +23,14 @@ interface GameResult {
 }
 
 const Home: React.FC = () => {
-  const options: string[] = ['roca', 'papel', 'tijera'];
+  const options: string[] = ["roca", "papel", "tijera"];
   const [playerChoice, setPlayerChoice] = useState<string | null>(null);
   const [computerChoice, setComputerChoice] = useState<string | null>(null);
   const [result, setResult] = useState<string | null>(null);
   const [gameHistory, setGameHistory] = useState<GameResult[]>([]);
 
-  function play() {
+  function play(playerChoice: string) {
     const computerChoice = options[Math.floor(Math.random() * options.length)];
-    const playerChoice = options[Math.floor(Math.random() * options.length)];
     setPlayerChoice(playerChoice);
     setComputerChoice(computerChoice);
 
@@ -40,41 +39,32 @@ const Home: React.FC = () => {
       newResult = {
         playerChoice,
         computerChoice,
-        result: 'Empate!',
-        winner: 'Empate',
+        result: "Empate!",
+        winner: "Empate",
       };
     } else if (
-      (playerChoice === 'roca' && computerChoice === 'tijera') ||
-      (playerChoice === 'papel' && computerChoice === 'roca') ||
-      (playerChoice === 'tijera' && computerChoice === 'papel')
+      (playerChoice === "roca" && computerChoice === "tijera") ||
+      (playerChoice === "papel" && computerChoice === "roca") ||
+      (playerChoice === "tijera" && computerChoice === "papel")
     ) {
       newResult = {
         playerChoice,
         computerChoice,
-        result: 'Tu ganas!',
-        winner: 'Jugador',
+        result: "Tu ganas!",
+        winner: "Jugador",
       };
     } else {
       newResult = {
         playerChoice,
         computerChoice,
-        result: 'Tu pierdes!',
-        winner: 'Máquina',
+        result: "Tu pierdes!",
+        winner: "Máquina",
       };
     }
 
     setResult(newResult.result);
     setGameHistory([...gameHistory, newResult].slice(-10));
   }
-
-  function reset() {
-    setPlayerChoice(null);
-    setComputerChoice(null);
-    setResult(null);
-    setGameHistory([]);
-  }
-
-
 
   return (
     <IonPage>
@@ -105,14 +95,18 @@ const Home: React.FC = () => {
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonButton expand="block" onClick={play}>
-                Jugar
+              <IonButton expand="block" onClick={() => play("roca")}>
+                Roca
+              </IonButton>
+              <IonButton expand="block" onClick={() => play("papel")}>
+                Papel
+              </IonButton>
+              <IonButton expand="block" onClick={() => play("tijera")}>
+                Tijera
               </IonButton>
             </IonCol>
             <IonCol>
-              <IonButton expand="block" onClick={reset}>
-                Reiniciar
-              </IonButton>
+             
             </IonCol>
           </IonRow>
           <IonRow>
@@ -124,7 +118,9 @@ const Home: React.FC = () => {
                   <ul>
                     {gameHistory.map((game: GameResult, index: number) => (
                       <li key={index}>
-                        Jugador: {game.playerChoice} - Máquina: {game.computerChoice} - Resultado: {game.result} - Ganador: {game.winner}
+                        Jugador: {game.playerChoice} - Máquina:{" "}
+                        {game.computerChoice} - Resultado: {game.result} -
+                        Ganador: {game.winner}
                       </li>
                     ))}
                   </ul>
@@ -135,9 +131,7 @@ const Home: React.FC = () => {
         </IonGrid>
       </IonContent>
     </IonPage>
-  )
+  );
 };
 
 export default Home;
-
-
