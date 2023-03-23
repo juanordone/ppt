@@ -1,0 +1,39 @@
+.choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .choice ion-icon {
+    font-size: 8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .choice ion-label {
+    font-size: 1.5rem;
+  }
+  
+  button {
+    margin-top: 1rem;
+  }
+  
+  h2 {
+    margin-top: 2rem;
+  }
+  
+  ul {
+    margin-top: 1rem;
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  li {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .reset-button {
+    margin-top: 1rem;
+  }
+  
