@@ -111,9 +111,7 @@ const Home: React.FC = () => {
                 Tijera
               </IonButton>
             </IonCol>
-            <IonCol>
-             <IonButton onClick={resetGame}>Reiniciar</IonButton>
-            </IonCol>
+            
           </IonRow>
           <IonRow>
             <IonCol>
@@ -134,6 +132,9 @@ const Home: React.FC = () => {
               )}
             </IonCol>
           </IonRow>
+          <IonCol>
+             <IonButton onClick={resetGame}>Reiniciar</IonButton>
+            </IonCol>
         </IonGrid>
       </IonContent>
     </IonPage>
