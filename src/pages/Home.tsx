@@ -12,7 +12,7 @@ import {
   IonIcon,
   IonLabel,
 } from "@ionic/react";
-import { calculatorOutline } from "ionicons/icons";
+import { calculatorOutline, man } from "ionicons/icons";
 import "./Home.css";
 
 interface GameResult {
@@ -29,7 +29,8 @@ const Home: React.FC = () => {
   const [result, setResult] = useState<string | null>(null);
   const [gameHistory, setGameHistory] = useState<GameResult[]>([]);
 
-  function play(playerChoice: string) {
+  function play() {
+    const playerChoice = options[Math.floor(Math.random() * options.length)];
     const computerChoice = options[Math.floor(Math.random() * options.length)];
     setPlayerChoice(playerChoice);
     setComputerChoice(computerChoice);
@@ -93,7 +94,7 @@ const Home: React.FC = () => {
             <IonCol>
               {playerChoice && (
                 <div className="choice">
-                  <IonIcon icon={calculatorOutline} />
+                  <IonIcon icon={man} />
                   <IonLabel>{playerChoice}</IonLabel>
                 </div>
               )}
@@ -101,15 +102,10 @@ const Home: React.FC = () => {
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonButton expand="block" onClick={() => play("roca")}>
-                Roca
+              <IonButton expand="block" onClick={() => play()}>
+                jugar
               </IonButton>
-              <IonButton expand="block" onClick={() => play("papel")}>
-                Papel
-              </IonButton>
-              <IonButton expand="block" onClick={() => play("tijera")}>
-                Tijera
-              </IonButton>
+             
             </IonCol>
             
           </IonRow>
@@ -122,8 +118,8 @@ const Home: React.FC = () => {
                   <ul>
                     {gameHistory.map((game: GameResult, index: number) => (
                       <li key={index}>
-                        Jugador: {game.playerChoice} - Máquina:{" "}
-                        {game.computerChoice} - Resultado: {game.result} -
+                        Jugador: {game.playerChoice} / Máquina:{" "}
+                        {game.computerChoice} / Resultado: {game.result} -
                         Ganador: {game.winner}
                       </li>
                     ))}
